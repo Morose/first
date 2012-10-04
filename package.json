@@ -1,0 +1,19 @@
+{
+  "name": "first",
+  "version": "0.0.1",
+  "private": true,
+  "scripts": {
+    "start": "node app",
+    "test": "mocha"
+  },
+  "dependencies": {
+    "express": "3.0.0rc5",
+    "jade": "*",
+    "mongoose":"3.2.1"
+  },
+  "devDependencies": {
+    "mocha": "*",
+    "should": "*",
+    "supertest": "*"
+  }
+}
