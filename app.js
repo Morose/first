@@ -7,12 +7,19 @@ var express = require('express')
   , routes = require('./routes')
   , user = require('./routes/user')
   , http = require('http')
-  , path = require('path');
+  , path = require('path')
+  , config = require('config')
+  , mongoose = require('mongoose');
 
 var app = express();
 
+mongoose.connect('mongodb://'+config.mongoose.host+'/'+config.mongoose.name);
+mongoose.connection.on('open', function() {
+  console.log('Connected to Mongoose');
+});
+
 app.configure(function(){
-  app.set('port', process.env.PORT || 3000);
+  app.set('port', config.serverPort);
   app.set('views', __dirname + '/views');
   app.set('view engine', 'jade');
   app.use(express.favicon());
@@ -23,7 +30,7 @@ app.configure(function(){
   app.use(express.static(path.join(__dirname, 'public')));
 });
 
-app.configure('development', function(){
+app.configure('development.yaml', function(){
   app.use(express.errorHandler());
 });
 

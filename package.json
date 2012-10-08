@@ -9,7 +9,8 @@
   "dependencies": {
     "express": "3.0.0rc5",
     "jade": "*",
-    "mongoose":"3.2.1"
+    "mongoose":"3.2.1",
+    "config":"*"
   },
   "devDependencies": {
     "mocha": "*",
