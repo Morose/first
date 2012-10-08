@@ -1,5 +1,5 @@
 mongoose:
-  name: "first-development"
-  host: "localhost"
+  dbname: "first-development"
+  hostname: "localhost"
   port: 3333
   password: ''
