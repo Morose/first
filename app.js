@@ -19,6 +19,7 @@ mongoose.connection.on('open', function() {
 });
 
 app.configure(function(){
+  app.set('port', process.env.PORT || 3000);
   app.set('port', config.serverPort);
   app.set('views', __dirname + '/views');
   app.set('view engine', 'jade');
