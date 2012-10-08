@@ -13,7 +13,7 @@ var express = require('express')
 
 var app = express();
 
-mongoose.connect('mongodb://'+config.mongoose.host+'/'+config.mongoose.name);
+mongoose.connect('mongodb://'+config.mongoose.hostname+'/'+config.mongoose.dbname);
 mongoose.connection.on('open', function() {
   console.log('Connected to Mongoose');
 });
