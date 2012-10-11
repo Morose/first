@@ -1,14 +1,13 @@
 var mongoose = require('mongoose');
 
-var Schema = mongoose.Schema
-  ,ObjectId = Schema.ObjectId;
+var Schema = mongoose.Schema;
 
 // create User model
 var User = new Schema({
-  username: {type:String,require: true, trim: true, unique: true},
+  username: {type:String, require: true, trim: true, unique: true},
   password: String,
-  dateCreated: Date,
-  lastUpdated: Date,
+  dateCreated: {type:Date, default: Date.now},
+  updated: {type:Date, default: Date.now},
   profile: {
     firstName: String,
     lastName: String
