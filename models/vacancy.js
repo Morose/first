@@ -3,8 +3,10 @@ var mongoose = require('mongoose');
 var Schema = mongoose.Schema;
 
 var Vacancy = new Schema({
+  _owner : {type: Schema.Type.ObjectId, ref: "User"},
+  slug : { type: String, lowercase: true, trim: true }, // короткое имя в пути
+  name: {type:String, require:true, trim:true, index: true}, // Название
   vacancyInfo : {
-    name: {type:String, require:true, trim:true}, // Название
     type: {type: String, enum: ['fulltime', 'contract','freelance'], require:true}, // Тип занятости
     location: {type:String, require:true, trim:true}, // Страна, город
     // категория: Разное, Дизайн и юзабилити, Фронтенд, Бэкенд, Приложения, Управление и менеджмент, Контент, Администрирование, Тестирование
