@@ -6,6 +6,7 @@
 var express = require('express')
   , routes = require('./routes')
   , user = require('./routes/user')
+  , vacancy = require('./routes/vacancy')
   , http = require('http')
   , path = require('path')
   , config = require('config')
@@ -35,8 +36,17 @@ app.configure('development', function(){
 });
 
 app.get('/', routes.index);
-app.get('/users', user.list);
+
+// Vacancy list
+app.get('/vacancies.:format?',      vacancy.list);
+app.post('/vacancies.:format?',     vacancy.add);
+app.get('/vacancies/:id.:format?',  vacancy.get);
+app.put('/vacancies/:id.:format?',  vacancy.update);
+app.del('/vacancies/:id.:format?',  vacancy.delete);
 
 http.createServer(app).listen(app.get('port'), function(){
   console.log("Express server listening on port " + app.get('port'));
 });
+
+// exports for testing
+module.exports = app;
